@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import config from '../config/config.js';
 import Session from '../models/session.js';
+import { sendEmail } from '../services/email.service.js';
 
 export async function registerUser(req, res) {
     const { username, email, password } = req.body;
@@ -54,7 +55,7 @@ export async function registerUser(req, res) {
             id: newUser._id,
             username: newUser.username,
             email: newUser.email,
-            accesstoken: accesstoken,
+            
         }
      });
 }
